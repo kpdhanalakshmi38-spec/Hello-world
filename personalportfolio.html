@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark {
+      background: #1e1e1e;
+      color: #f1f1f1;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background: #4b79a1;
+      color: white;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px 0;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+      border-left: 4px solid #4b79a1;
+      padding-left: 8px;
+    }
+
+    /* About Section */
+    .about {
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .skill-box {
+      padding: 12px;
+      background: #fff;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .dark .skill-box {
+      background: #2c2c2c;
+    }
+
+    /* Projects */
+    .projects {
+      margin-top: 10px;
+    }
+
+    .project-box {
+      padding: 15px;
+      background: #fff;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .dark .project-box {
+      background: #2c2c2c;
+    }
+
+    /* Contact form */
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #999;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      background: #4b79a1;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      background: #333;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .dark .toggle-btn {
+      background: #ddd;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</div>
+
+  <header>
+    <h1>My Personal Portfolio</h1>
+  </header>
+
+  <div class="container">
+
+    <!-- ABOUT -->
+    <section class="about">
+      <h2>About Me</h2>
+      <p>
+        Hi! I’m a web development enthusiast who enjoys building responsive websites,
+        experimenting with UI design, and learning new technologies.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-box">HTML</div>
+        <div class="skill-box">CSS</div>
+        <div class="skill-box">JavaScript</div>
+        <div class="skill-box">React Basics</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects">
+      <h2>Projects</h2>
+
+      <div class="project-box">
+        <h3>Weather UI</h3>
+        <p>A simple static weather card made with HTML, CSS, and JavaScript.</p>
+      </div>
+
+      <div class="project-box">
+        <h3>To-Do App</h3>
+        <p>A task management tool using localStorage.</p>
+      </div>
+
+      <div class="project-box">
+        <h3>Portfolio Page</h3>
+        <p>A clean personal portfolio website with dark mode.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section>
+      <h2>Contact Me</h2>
+      <form class="contact-form" onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Your Name">
+        <input type="email" id="email" placeholder="Your Email">
+        <textarea id="message" placeholder="Message" rows="4"></textarea>
+
+        <button class="btn" type="submit">Send Message</button>
+      </form>
+    </section>
+
+  </div>
+
+  <script>
+    // Dark Mode Toggle
+    function toggleMode() {
+      document.body.classList.toggle("dark");
+
+      const btn = document.querySelector(".toggle-btn");
+      btn.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    }
+
+    // Form Validation
+    function validateForm() {
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let msg = document.getElementById("message").value.trim();
+
+      if (!name || !email || !msg) {
+        alert("Please fill in all fields.");
+        return false;
+      }
+
+      if (!email.includes("@") || !email.includes(".")) {
+        alert("Please enter a valid email.");
+        return false;
+      }
+
+      alert("Message sent successfully!");
+      return true;
+    }
+  </script>
+
+</body>
+</html>

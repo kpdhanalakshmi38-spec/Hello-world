@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Info Card</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      transition: background 0.4s ease;
+    }
+
+    .card {
+      width: 300px;
+      padding: 20px;
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: 0.4s ease;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    .temp {
+      font-size: 40px;
+      font-weight: bold;
+      margin: 5px 0;
+    }
+
+    .condition {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #333;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="weatherCard">
+    <h2 id="location">Bangalore</h2>
+    <div class="temp" id="temperature">28°C</div>
+    <div class="condition" id="condition">Sunny ☀️</div>
+    <button onclick="refreshWeather()">Refresh</button>
+  </div>
+
+  <script>
+    const weatherData = [
+      { location: "Bangalore", temp: "28°C", condition: "Sunny ☀️", bg: "#f7d08a" },
+      { location: "Delhi", temp: "18°C", condition: "Cloudy ☁️", bg: "#cfd6df" },
+      { location: "Mumbai", temp: "30°C", condition: "Humid 🌫️", bg: "#f2c4a5" },
+      { location: "Chennai", temp: "32°C", condition: "Hot 🔥", bg: "#ffb3a5" },
+      { location: "Kolkata", temp: "24°C", condition: "Rainy 🌧️", bg: "#a9cfff" }
+    ];
+
+    function refreshWeather() {
+      const random = weatherData[Math.floor(Math.random() * weatherData.length)];
+      document.getElementById("location").textContent = random.location;
+      document.getElementById("temperature").textContent = random.temp;
+      document.getElementById("condition").textContent = random.condition;
+      document.body.style.background = random.bg;
+    }
+  </script>
+</body>
+</html>
